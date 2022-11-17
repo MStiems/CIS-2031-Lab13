@@ -17,29 +17,24 @@ void print( List* l, std::ostream &out){
         out << l->value; //Print out it's value
         l = l->next; //Move on to the next value
     }
-}
+} 
 
 //Returns the number of items in the list
 int length(List* l){
-    int length = 0;
-    while ( l != NULL ){
-        l = l->next;
-        length++;
+    if (l== NULL){
+        return 0;
+    }else{
+     return 1 + length ( l-> next);
     }
-    return length;
 }
 
 //Get the Nth item from the list
 string get(List* l, int index){
-    while( l != NULL && index > 0 ){
-            index--;
-            l = l->next;
-    }
-    if ( l == NULL ){
-        return "";
-    } else {
-        return l->value;
-    }
+    if (l==NULL)
+        return ""; 
+    if (index==0)
+        return l-> value;
+    return get(l-> next, index - 1 );
 }
 
 //Returns true if the list contains needle
